@@ -1,0 +1,3 @@
+C:/Users/Filip/Documents/projekt-1/build-Projekt1-Desktop_Qt_5_15_1_MinGW_64_bit-RelWithDebInfo/CMakeFiles/rebuild_cache.dir
+C:/Users/Filip/Documents/projekt-1/build-Projekt1-Desktop_Qt_5_15_1_MinGW_64_bit-RelWithDebInfo/CMakeFiles/Projekt1.dir
+C:/Users/Filip/Documents/projekt-1/build-Projekt1-Desktop_Qt_5_15_1_MinGW_64_bit-RelWithDebInfo/CMakeFiles/edit_cache.dir
