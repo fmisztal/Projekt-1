@@ -15,10 +15,12 @@ class Hearing_aid{
 
         void write();
         void parQuantity();
+        void objQuantity();
 
         bool operator==(const Hearing_aid &h);
-        int operator[](int number);
+        int operator[](int number);                     //shows the data of a chosen parameter
         Hearing_aid& operator=(const Hearing_aid &h);
+        operator string();                              //transfers year of production to string
 
         Battery battery;
         Parameter *parameter;
@@ -28,8 +30,8 @@ class Hearing_aid{
         int production_year;
 };
 
-ostream& operator<<(ostream &s, Hearing_aid &h);
-
+ostream& operator<<(ostream &s, Hearing_aid &h);        //allows to print the object's data
+void operator>>(int x, Hearing_aid &h);                 //changes year of production
 
 #endif // HEARING_AID_H
 

@@ -151,7 +151,25 @@ void Hearing_aid::parQuantity()
     cout << "Number of parameters: " << number_of_parameters << endl;
 };
 
+void Hearing_aid::objQuantity()
+{
+    cout << "Number of objects of this type: " << number_of_objects << endl;
+};
+
 ostream& operator<<(ostream &s, Hearing_aid &h)
 {
     return s << "Name: " << h.name << ", Year of production: " << h.production_year << endl;
 };
+
+Hearing_aid::operator string()
+{
+    return "Year of production: " + to_string(production_year);
+};
+
+void operator>>(int x, Hearing_aid &h)
+{
+    h.production_year = x;
+};
+
+
+

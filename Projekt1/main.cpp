@@ -12,33 +12,62 @@ int main()
     p1.parameter[1].addName("size");
     p1.parameter[1].addValue(25);
 
+    cout << "_______________________________________________" << endl;
+
     Hearing_aid p2("TEST", 2001, 1);
     p2.battery.addSize(3000);
     p2.battery.addLifespan(50);
-    p2.parameter[0].addName("wef");
+    p2.parameter[0].addName("Wireless");
 
-    Hearing_aid p3=p2;
-    p3=p1;
-    Hearing_aid p4=p1;
-    Hearing_aid p5;
+    cout << "_______________________________________________" << endl;
+
+    Hearing_aid p3=p1;
+
+    cout << "_______________________________________________" << endl;
+
+    Hearing_aid p4;
     p4=p2;
-    p5=p2;
-    p5=p1;
 
+    cout << "_______________________________________________" << endl;
 
     if(p4==p3)
-        cout << "YES" << endl;
+        cout << "EQUAL" << endl;
     else
-        cout << "NO" << endl;
+        cout << "DIFFERENT" << endl;
 
-    p1.write();
+    cout << "_______________________________________________" << endl;
 
-    p2[1];
+    p4=p1;
+
+    if(p4==p3)
+        cout << "EQUAL" << endl;
+    else
+        cout << "DIFFERENT" << endl;
+
+    cout << "_______________________________________________" << endl;
+
+    p2[0];
     p2[3];
 
-    cout << "........" << endl;
+    cout << "_______________________________________________" << endl;
+
+    p1.objQuantity();
+
+    cout << "_______________________________________________" << endl;
+
+    string s = (string)p1 + " ADDITIONAL TEXT";
+    cout << s << endl;
+
+    cout << "_______________________________________________" << endl;
+
+    1999>>p1;
+    p1.write();
+
+    cout << "_______________________________________________" << endl;
+
     cout << p1.number_of_objects << ", " << p1.battery.number_of_objects << ", " << p1.parameter->number_of_objects << endl;
-    cout << "........" << endl;
+
+    cout << "_______________________________________________" << endl;
 
     return 0;
 }
