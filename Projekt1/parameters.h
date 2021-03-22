@@ -1,5 +1,7 @@
 #ifndef PARAMETERS_H
 #define PARAMETERS_H
+#include <iostream>
+#include <cstring>
 
 using namespace std;
 
@@ -10,12 +12,15 @@ class Parameter{
 
         void addName(char *name);
         void addValue(int value);
-        void writeParameter();
 
-    private:
+        bool operator==(const Parameter &p);
+
         static int number_of_objects;
-        char m1_name[1024];
-        int m_value;
+
+        char m_name[1024];
+        int m_value=0;
 };
+
+ostream& operator<<(ostream &s, Parameter &p);
 
 #endif // PARAMETERS_H

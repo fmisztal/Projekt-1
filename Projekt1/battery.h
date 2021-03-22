@@ -1,5 +1,6 @@
 #ifndef BATTERY_H
 #define BATTERY_H
+#include <iostream>
 
 using namespace std;
 
@@ -14,9 +15,11 @@ class Battery{
         int m_size;
         int m_lifespan;
 
-    private:
-        static int number_of_objects;
+        bool operator==(const Battery &b);
 
+        static int number_of_objects;
 };
+
+ostream& operator<<(ostream &s, Battery &b);
 
 #endif // BATTERY_H

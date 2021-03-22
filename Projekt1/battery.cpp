@@ -4,11 +4,15 @@
 
 using namespace std;
 
+int Battery::number_of_objects=0;
+
 Battery::Battery()
 {
     #ifdef _DEBUG
         cout << "Battery()" << endl;
     #endif
+
+    number_of_objects++;
 };
 
 Battery::~Battery()
@@ -16,6 +20,8 @@ Battery::~Battery()
     #ifdef _DEBUG
         cout << "~Battery()" << endl;
     #endif
+
+    number_of_objects--;
 };
 
 void Battery::addSize(int size)
@@ -27,3 +33,13 @@ void Battery::addLifespan(int lifespan)
 {
     m_lifespan=lifespan;
 }
+
+bool Battery::operator==(const Battery &b)
+{
+    return m_size==b.m_size && m_lifespan==b.m_lifespan;
+};
+
+ostream& operator<<(ostream &s, Battery &b)
+{
+    return s << "Battery: size- " << b.m_size << ", Lifespan- " << b.m_lifespan << " hours" << endl;
+};
