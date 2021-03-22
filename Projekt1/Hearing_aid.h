@@ -7,10 +7,8 @@ using namespace std;
 
 class Hearing_aid{
     public:
-        Hearing_aid();
         Hearing_aid(const Hearing_aid &h);
-        Hearing_aid(const char *name, const int production_year);
-        Hearing_aid(const char *name, const int production_year, const int number_of_patrameters);
+        Hearing_aid(const string name="", const int production_year=0, const int number_of_patrameters=0);
         ~Hearing_aid();
 
         void write();
@@ -24,10 +22,10 @@ class Hearing_aid{
 
         Battery battery;
         Parameter *parameter;
-        static int number_of_objects;
+        string name;
         int number_of_parameters;
-        char name[1024];
         int production_year;
+        static int number_of_objects;
 };
 
 ostream& operator<<(ostream &s, Hearing_aid &h);        //allows to print the object's data

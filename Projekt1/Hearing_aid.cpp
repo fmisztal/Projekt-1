@@ -7,41 +7,20 @@ using namespace std;
 
 int Hearing_aid::number_of_objects=0;
 
-Hearing_aid::Hearing_aid()
+Hearing_aid::Hearing_aid(const string name, const int production_year, const int number_of_parameters)
 {
     #ifdef _DEBUG
-        cout << "Hearing_aid()" << endl;
+        cout << "Hearing_aid(const string name, const int production_year, const int number_of_parameters)" << endl;
     #endif
 
-    parameter=0;
-    number_of_objects++;
-};
-
-
-Hearing_aid::Hearing_aid(const char *name, const int production_year)
-{
-    #ifdef _DEBUG
-        cout << "Hearing_aid(const char *name, const int production_year)" << endl;
-    #endif
-
-    strcpy(this->name, name);
-    this->production_year=production_year;
-
-    number_of_objects++;
-};
-
-Hearing_aid::Hearing_aid(const char *name, const int production_year, const int number_of_parameters)
-{
-    #ifdef _DEBUG
-        cout << "Hearing_aid(const char *name, const int production_year, const int number_of_patrameters)" << endl;
-    #endif
-
-    strcpy(this->name, name);
+    this->name=name;
     this->production_year=production_year;
     this->number_of_parameters=number_of_parameters;
 
     if(number_of_parameters>0)
         this->parameter=new Parameter[number_of_parameters];
+    else
+        parameter=0;
 
     number_of_objects++;
 };
@@ -52,7 +31,7 @@ Hearing_aid::Hearing_aid(const Hearing_aid &h)
         cout << "Hearing_aid(const Hearing_aid &h)" << endl;
     #endif
 
-    strcpy(name, h.name);
+    name=h.name;
     production_year=h.production_year;
     number_of_parameters=h.number_of_parameters;
 
@@ -96,7 +75,7 @@ int Hearing_aid::operator[](int number)
 
 Hearing_aid& Hearing_aid::operator=(const Hearing_aid &h)
 {
-    strcpy(name, h.name);
+    name=h.name;
     production_year=h.production_year;
     number_of_parameters=h.number_of_parameters;
 
@@ -119,7 +98,7 @@ Hearing_aid& Hearing_aid::operator=(const Hearing_aid &h)
 
 bool Hearing_aid::operator==(const Hearing_aid &h)
 {
-    if(battery==h.battery && strcmp(name, h.name)==0 && production_year==h.production_year)
+    if(battery==h.battery && name==h.name && production_year==h.production_year)
         if(number_of_parameters==h.number_of_parameters)
         {
             int x=0;

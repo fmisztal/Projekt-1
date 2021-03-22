@@ -7,18 +7,17 @@ using namespace std;
 
 class Parameter{
     public:
-        Parameter();
+        Parameter(const string name="", const int value=0);
         ~Parameter();
 
-        void addName(char *name);
+        void addName(string name);
         void addValue(int value);
 
         bool operator==(const Parameter &p);
 
+        string m_name;
+        int m_value;
         static int number_of_objects;
-
-        char m_name[1024];
-        int m_value=0;
 };
 
 ostream& operator<<(ostream &s, Parameter &p);

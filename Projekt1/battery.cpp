@@ -6,11 +6,14 @@ using namespace std;
 
 int Battery::number_of_objects=0;
 
-Battery::Battery()
+Battery::Battery(const int size, const int lifespan)
 {
     #ifdef _DEBUG
-        cout << "Battery()" << endl;
+        cout << "Battery(const int size, const int lifespan)" << endl;
     #endif
+
+    m_size=size;
+    m_lifespan=lifespan;
 
     number_of_objects++;
 };

@@ -6,17 +6,16 @@ using namespace std;
 
 class Battery{
     public:
-        Battery();
+        Battery(const int size=0, const int lifespan=0);
         ~Battery();
 
         void addSize(int size);
         void addLifespan(int lifespan);
 
-        int m_size;
-        int m_lifespan;
-
         bool operator==(const Battery &b);
 
+        int m_size;
+        int m_lifespan;
         static int number_of_objects;
 };
 
