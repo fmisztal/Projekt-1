@@ -1,0 +1,6 @@
+# ninja log v5
+3	505	6381523395915237	CMakeFiles/Projekt1.dir/battery.cpp.obj	548d76cc203237b0
+8	509	6381523395955121	CMakeFiles/Projekt1.dir/parameters.cpp.obj	1de11cab9c9a987b
+0	560	6381523396467045	CMakeFiles/Projekt1.dir/main.cpp.obj	158de82bdd7cc529
+6	597	6381523396847203	CMakeFiles/Projekt1.dir/Hearing_aid.cpp.obj	7a4be087883032c
+597	712	6381523397944233	Projekt1.exe	1bf87ddce6967141

@@ -14,6 +14,7 @@ class Hearing_aid{
         void write();
         void parQuantity();
         void objQuantity();
+        void batQuantity();
 
         bool operator==(const Hearing_aid &h);
         int operator[](int number);                     //shows the data of a chosen parameter

@@ -9,8 +9,10 @@ int Hearing_aid::number_of_objects=0;
 
 Hearing_aid::Hearing_aid(const string name, const int production_year, const int number_of_parameters)
 {
+    number_of_objects++;
+
     #ifdef _DEBUG
-        cout << "Hearing_aid(const string name, const int production_year, const int number_of_parameters)" << endl;
+        cout << "Hearing_aid(const string name, const int production_year, const int number_of_parameters) [" << number_of_objects << "]" << endl;
     #endif
 
     this->name=name;
@@ -21,14 +23,14 @@ Hearing_aid::Hearing_aid(const string name, const int production_year, const int
         this->parameter=new Parameter[number_of_parameters];
     else
         parameter=0;
-
-    number_of_objects++;
 };
 
 Hearing_aid::Hearing_aid(const Hearing_aid &h)
 {
+    number_of_objects++;
+
     #ifdef _DEBUG
-        cout << "Hearing_aid(const Hearing_aid &h)" << endl;
+        cout << "Hearing_aid(const Hearing_aid &h) [" << number_of_objects << "]" << endl;
     #endif
 
     name=h.name;
@@ -46,24 +48,26 @@ Hearing_aid::Hearing_aid(const Hearing_aid &h)
     }
     else
         parameter = nullptr;
-
-    number_of_objects++;
 };
 
 Hearing_aid::~Hearing_aid()
 {
+    number_of_objects--;
+
     #ifdef _DEBUG
-        cout << "~Hearing_aid()" << endl;
+        cout << "~Hearing_aid() [" << number_of_objects << "]" << endl;
     #endif
 
     if (parameter != nullptr)
         delete[] parameter;
-
-    number_of_objects--;
 };
 
 int Hearing_aid::operator[](int number)
 {
+    #ifdef _DEBUG
+        cout << "operator[]" << endl;
+    #endif
+
     if(number>=number_of_parameters)
     {
         cout << "No such parameter" << endl;
@@ -75,6 +79,10 @@ int Hearing_aid::operator[](int number)
 
 Hearing_aid& Hearing_aid::operator=(const Hearing_aid &h)
 {
+    #ifdef _DEBUG
+        cout << "operator=" << endl;
+    #endif
+
     name=h.name;
     production_year=h.production_year;
     number_of_parameters=h.number_of_parameters;
@@ -98,6 +106,10 @@ Hearing_aid& Hearing_aid::operator=(const Hearing_aid &h)
 
 bool Hearing_aid::operator==(const Hearing_aid &h)
 {
+    #ifdef _DEBUG
+        cout << "operator==" << endl;
+    #endif
+
     if(battery==h.battery && name==h.name && production_year==h.production_year)
         if(number_of_parameters==h.number_of_parameters)
         {
@@ -127,26 +139,43 @@ void Hearing_aid::write()
 
 void Hearing_aid::parQuantity()
 {
-    cout << "Number of parameters: " << number_of_parameters << endl;
+    cout << "Number of Parameter objects: " << parameter->number_of_objects << endl;
 };
 
 void Hearing_aid::objQuantity()
 {
-    cout << "Number of objects of this type: " << number_of_objects << endl;
+    cout << "Number of Hearing_aid objects: " << number_of_objects << endl;
+};
+
+void Hearing_aid::batQuantity()
+{
+    cout << "Number of Battery objects: " << battery.number_of_objects << endl;
 };
 
 ostream& operator<<(ostream &s, Hearing_aid &h)
 {
+    #ifdef _DEBUG
+        cout << "operator<<" << endl;
+    #endif
+
     return s << "Name: " << h.name << ", Year of production: " << h.production_year << endl;
 };
 
 Hearing_aid::operator string()
 {
+    #ifdef _DEBUG
+        cout << "operator string()" << endl;
+    #endif
+
     return "Year of production: " + to_string(production_year);
 };
 
 void operator>>(int x, Hearing_aid &h)
 {
+    #ifdef _DEBUG
+        cout << "operator>>" << endl;
+    #endif
+
     h.production_year = x;
 };
 
