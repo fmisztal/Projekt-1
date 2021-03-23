@@ -11,15 +11,17 @@ class Hearing_aid{
         Hearing_aid(const string name="", const int production_year=0, const int number_of_patrameters=0);
         ~Hearing_aid();
 
-        void write();
-        void parQuantity();
-        void objQuantity();
-        void batQuantity();
+        static int objQuantity()
+        {
+            return number_of_objects;
+        };
 
-        bool operator==(const Hearing_aid &h);
-        int operator[](int number);                     //shows the data of a chosen parameter
         Hearing_aid& operator=(const Hearing_aid &h);
+        bool operator==(const Hearing_aid &h);    
+        void operator[](int number);                    //shows the data of a chosen parameter
         operator string();                              //transfers year of production to string
+        void operator++();                              //incrementation of battery lifespan (by 5)
+        void operator--();
 
         Battery battery;
         Parameter *parameter;

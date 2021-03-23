@@ -11,6 +11,10 @@ class Battery{
 
         void addSize(int size);
         void addLifespan(int lifespan);
+        static int batQuantity()
+        {
+            return number_of_objects;
+        };
 
         bool operator==(const Battery &b);
 

@@ -55,7 +55,9 @@ ostream& operator<<(ostream &s, Parameter &p)
 
     if(p.m_name=="")
         return s << "";
+
     if(p.m_value==0)
         return s << p.m_name;
+
     return s << p.m_name << "- " << p.m_value;
 };

@@ -62,21 +62,6 @@ Hearing_aid::~Hearing_aid()
         delete[] parameter;
 };
 
-int Hearing_aid::operator[](int number)
-{
-    #ifdef _DEBUG
-        cout << "operator[]" << endl;
-    #endif
-
-    if(number>=number_of_parameters)
-    {
-        cout << "No such parameter" << endl;
-        return 0;
-    }
-    cout << parameter[number] << endl;
-    return 0;
-};
-
 Hearing_aid& Hearing_aid::operator=(const Hearing_aid &h)
 {
     #ifdef _DEBUG
@@ -123,42 +108,22 @@ bool Hearing_aid::operator==(const Hearing_aid &h)
     return false;
 };
 
-void Hearing_aid::write()
-{
-    cout << "-----------------------------------------" << endl;
-    cout  << "Name: " << name << ", Year of production: " << production_year << endl;
-    cout << battery << "Others: ";
-    for(int i=0; i<number_of_parameters; i++)
-    {
-        if(i!=0)
-            cout << ", ";
-        cout << parameter[i];
-    }
-    cout << endl << "-----------------------------------------" << endl;
-};
-
-void Hearing_aid::parQuantity()
-{
-    cout << "Number of Parameter objects: " << parameter->number_of_objects << endl;
-};
-
-void Hearing_aid::objQuantity()
-{
-    cout << "Number of Hearing_aid objects: " << number_of_objects << endl;
-};
-
-void Hearing_aid::batQuantity()
-{
-    cout << "Number of Battery objects: " << battery.number_of_objects << endl;
-};
-
 ostream& operator<<(ostream &s, Hearing_aid &h)
 {
     #ifdef _DEBUG
         cout << "operator<<" << endl;
     #endif
 
-    return s << "Name: " << h.name << ", Year of production: " << h.production_year << endl;
+    s << "-----------------------------------------" << endl;
+    s  << "Name: " << h.name << ", Year of production: " << h.production_year << endl;
+    s << h.battery << "Others: ";
+    for(int i=0; i<h.number_of_parameters; i++)
+    {
+        if(i!=0)
+            cout << ", ";
+        cout << h.parameter[i];
+    }
+    return s << endl << "-----------------------------------------" << endl;
 };
 
 Hearing_aid::operator string()
@@ -168,6 +133,39 @@ Hearing_aid::operator string()
     #endif
 
     return "Year of production: " + to_string(production_year);
+};
+
+void Hearing_aid::operator[](int number)
+{
+    #ifdef _DEBUG
+        cout << "operator[]" << endl;
+    #endif
+
+    if(number>=number_of_parameters)
+    {
+        cout << "No such parameter" << endl;
+        return;
+    }
+    cout << parameter[number] << endl;
+    return;
+};
+
+void Hearing_aid::operator++()
+{
+    #ifdef _DEBUG
+        cout << "operator++" << endl;
+    #endif
+
+    battery.m_lifespan+=5;
+};
+
+void Hearing_aid::operator--()
+{
+    #ifdef _DEBUG
+        cout << "operator--" << endl;
+    #endif
+
+    battery.m_lifespan-=5;
 };
 
 void operator>>(int x, Hearing_aid &h)

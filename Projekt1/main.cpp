@@ -1,17 +1,32 @@
 #include <iostream>
+#include <windows.h>
 #include "Hearing_aid.h"
 
 using namespace std;
 
-void Separator(string text)
+HANDLE handle=GetStdHandle(STD_OUTPUT_HANDLE);
+
+Hearing_aid p0;
+
+void separator1(string text)
 {
-    cout << "________________________________________________________________________________________________" << endl;
+    SetConsoleTextAttribute(handle, FOREGROUND_BLUE | FOREGROUND_RED);
+    cout << "________________________________________________________________________________________________" << endl << endl;
     cout << text << endl << endl;
+    SetConsoleTextAttribute(handle, 7);
+};
+
+void separator2(string text)
+{
+    SetConsoleTextAttribute(handle, FOREGROUND_GREEN | FOREGROUND_BLUE);
+    cout << "________________________________________________________________________________________________" << endl << endl;
+    cout << text << endl << endl;
+    SetConsoleTextAttribute(handle, 7);
 };
 
 void objectTesting()
 {
-    Separator("Creating p1 and p2 with different number of parameters: ");
+    separator1("Creating p1 and p2 with different number of parameters: ");
 
     Hearing_aid p1("EarMax", 2011, 2);
     p1.battery.addSize(4000);
@@ -25,32 +40,28 @@ void objectTesting()
     p2.battery.addLifespan(50);
     p2.parameter[0].addName("Wireless");
 
-    Separator("Creating p3 as a copy of p2: ");
+    separator1("Creating p3 as a copy of p2: ");
 
     Hearing_aid p3=p2;
 
-    Separator("Creating dynamic object px and deleting it: ");
+    separator1("Creating dynamic object px and deleting it: ");
 
     Hearing_aid *px=new Hearing_aid;
     delete px;
 
-    Separator("Creating and printing empty p4: ");
+    separator1("Creating and printing empty p4: ");
 
     Hearing_aid p4("", 0, 5);
-    p4.write();
+    cout << p4;
 
-    Separator("Checking current number of objects: ");
+    separator1("Checking current number of objects: ");
 
-    p1.parQuantity();
-    p1.batQuantity();
-    p1.objQuantity();
-
-    cout << endl;
+    cout << "Hearing_aid: " << p1.objQuantity() << ", Battery: " << p1.battery.batQuantity() << ", Parameter: " << p1.parameter->parQuantity() << endl << endl;
 };
 
 void operatorTesting()
 {
-    Separator("Creating p1 and p2 with different number of parameters and p3 as a copy of p1: ");
+    separator2("Creating p1 and p2 with different number of parameters and p3 as a copy of p1: ");
 
     Hearing_aid p1("EarMax", 2011, 2);
     p1.battery.addSize(4000);
@@ -66,49 +77,51 @@ void operatorTesting()
 
     Hearing_aid p3(p1);
 
-    Separator("Printing p1 and p2: ");
+    separator2("Testing operator <<: ");
 
-    p1.write();
-    p2.write();
+    cout << p1;
+    cout << p2;
 
-    Separator("Testing operator = by creating empty p4, assigning it to p2, then to p1 and printing it: ");
+    separator2("Testing operator = by creating empty p4, assigning it to p2, then to p1 and printing it: ");
 
     Hearing_aid p4;
     p4=p2;
     p4=p1;
-    p4.write();
+    cout << p4;
 
-    Separator("Testing operator == (if(p1==p2) -false): ");
+    separator2("Testing operator == (if(p1==p2) -false and if(p1==p3) -true): ");
 
     if(p1==p2)
         cout << "EQUAL" << endl;
     else
-        cout << "DIFFERENT" << endl;
-
-    Separator("Testing operator == (if(p1==p3)) -true): ");
+        cout << "DIFFERENT" << endl << endl;
 
     if(p1==p3)
         cout << "EQUAL" << endl;
     else
         cout << "DIFFERENT" << endl;
 
-    Separator("Testing operator [] on full parameter and an empty one: ");
+    separator2("Testing operator [] on full parameter and an empty one: ");
 
     p2[0];
     cout << endl;
-    p2[3];
+    p2[9];
 
-    Separator("Testing operator <<: ");
+    separator2("Testing operator ++ and -- ");
 
-    cout << p1 << endl;
+    cout << p1.battery.m_lifespan << endl;
+    ++p1;
+    cout << p1.battery.m_lifespan << endl;
+    --p1;
+    cout << p1.battery.m_lifespan << endl;
 
-    Separator("Testing operator (string): ");     //kinda useless, i didn't have any ideas for that operator
+    separator2("Testing operator (string): ");     //kinda useless, i didn't have any ideas for that operator
 
     cout << p1.production_year << endl;
     string s = (string)p1 + " + ADDITIONAL TEXT";
     cout << s << endl;
 
-    Separator("Testing operator >> (changing the year of production): ");
+    separator2("Testing operator >> (changing the year of production): ");
 
     cout << p1.production_year << endl;
     1999>>p1;
