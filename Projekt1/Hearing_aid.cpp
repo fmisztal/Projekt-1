@@ -123,7 +123,8 @@ ostream& operator<<(ostream &s, Hearing_aid &h)
             cout << ", ";
         cout << h.parameter[i];
     }
-    return s << endl << "-----------------------------------------" << endl;
+    s << endl << "-----------------------------------------" << endl;
+    return s;
 };
 
 Hearing_aid::operator string()

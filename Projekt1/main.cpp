@@ -10,7 +10,7 @@ Hearing_aid p0;
 
 void separator1(string text)
 {
-    SetConsoleTextAttribute(handle, FOREGROUND_BLUE | FOREGROUND_RED);
+    SetConsoleTextAttribute(handle, FOREGROUND_BLUE | FOREGROUND_RED | FOREGROUND_INTENSITY );
     cout << "________________________________________________________________________________________________" << endl << endl;
     cout << text << endl << endl;
     SetConsoleTextAttribute(handle, 7);
