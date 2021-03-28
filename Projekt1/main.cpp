@@ -10,7 +10,7 @@ Hearing_aid p0;
 
 void separator1(string text)
 {
-    SetConsoleTextAttribute(handle, FOREGROUND_BLUE | FOREGROUND_RED | FOREGROUND_INTENSITY );
+    SetConsoleTextAttribute(handle, FOREGROUND_BLUE | FOREGROUND_RED);
     cout << "________________________________________________________________________________________________" << endl << endl;
     cout << text << endl << endl;
     SetConsoleTextAttribute(handle, 7);
@@ -46,7 +46,7 @@ void objectTesting()
 
     separator1("Creating dynamic object px and deleting it: ");
 
-    Hearing_aid *px=new Hearing_aid;
+    Hearing_aid *px=new Hearing_aid("HearAll",1980,3);
     delete px;
 
     separator1("Creating and printing empty p4: ");
