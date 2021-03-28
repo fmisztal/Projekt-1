@@ -27,6 +27,11 @@ Battery::~Battery()
     #endif
 };
 
+int Battery::batQuantity()
+{
+    return number_of_objects;
+};
+
 void Battery::addSize(int size)
 {
     m_size=size;

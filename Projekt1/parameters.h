@@ -12,10 +12,7 @@ class Parameter{
 
         void addName(string name);
         void addValue(int value);
-        static int parQuantity()
-        {
-            return number_of_objects;
-        };
+        static int parQuantity();
 
         bool operator==(const Parameter &p);
 

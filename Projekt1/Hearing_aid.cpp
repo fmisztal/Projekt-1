@@ -62,6 +62,11 @@ Hearing_aid::~Hearing_aid()
         delete[] parameter;
 };
 
+int Hearing_aid::objQuantity()
+{
+    return number_of_objects;
+};
+
 Hearing_aid& Hearing_aid::operator=(const Hearing_aid &h)
 {
     #ifdef _DEBUG

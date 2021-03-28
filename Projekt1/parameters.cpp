@@ -28,6 +28,11 @@ Parameter::~Parameter()
     #endif
 };
 
+int Parameter::parQuantity()
+{
+    return number_of_objects;
+};
+
 void Parameter::addName(string name)
 {
     m_name= name;

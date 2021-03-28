@@ -11,10 +11,7 @@ class Hearing_aid{
         Hearing_aid(const string name="", const int production_year=0, const int number_of_patrameters=0);
         ~Hearing_aid();
 
-        static int objQuantity()
-        {
-            return number_of_objects;
-        };
+        static int objQuantity();
 
         Hearing_aid& operator=(const Hearing_aid &h);
         bool operator==(const Hearing_aid &h);    
@@ -24,7 +21,7 @@ class Hearing_aid{
         void operator--();
 
         Battery battery;
-        Parameter *parameter;
+        Parameter *parameter=nullptr;
         string name;
         int number_of_parameters;
         int production_year;
